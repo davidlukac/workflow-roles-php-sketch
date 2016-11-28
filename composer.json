@@ -1,0 +1,29 @@
+{
+    "name": "davidlukac/workflow-spec",
+    "description": "Workflow",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "David Lukac",
+            "email": "david.lukac@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "davidlukac\\workflow_spec\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "davidlukac\\workflow_spec\\": "spec/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpspec/phpspec": "^3.1"
+    },
+    "config": {
+        "bin-dir": "bin/"
+    }
+}

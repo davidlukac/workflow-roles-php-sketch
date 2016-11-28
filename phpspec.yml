@@ -1,0 +1,7 @@
+suites:
+    default:
+        namespace: davidlukac\workflow_spec
+        psr4_prefix: davidlukac\workflow_spec
+        spec_prefix: null
+        src_path: src
+        spec_path: spec
