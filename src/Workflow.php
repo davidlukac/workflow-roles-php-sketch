@@ -77,4 +77,33 @@ class Workflow
     {
         return $this->transitions;
     }
+
+    /**
+     * @param State $state
+     *
+     * @return Transition[]
+     *
+     * @throws InvalidStateException
+     */
+    public function getAllowedTransitionsFor(State $state): array
+    {
+        // Validate if given State belongs to this Workflow.
+        $validState = in_array($state, $this->states);
+
+        if (false === $validState) {
+            throw new InvalidStateException("Given state doesn't exist in workflow {$this->name}.");
+        }
+
+        // Find Transitions, which have given State as the starting point.
+        $availableTransitions = array_filter($this->transitions, function (Transition $transition) use ($state) {
+            $isAvailable = false;
+            if ($transition->getInitialState() == $state) {
+                $isAvailable = true;
+            }
+
+            return $isAvailable;
+        });
+
+        return $availableTransitions;
+    }
 }
