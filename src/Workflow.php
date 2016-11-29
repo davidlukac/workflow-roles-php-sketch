@@ -2,6 +2,11 @@
 
 namespace davidlukac\workflow_spec;
 
+/**
+ * Class Workflow
+ *
+ * @package davidlukac\workflow_spec
+ */
 class Workflow
 {
     /** @var string */
@@ -9,6 +14,9 @@ class Workflow
 
     /** @var State[] */
     private $states = [];
+
+    /** @var Transition[] */
+    private $transitions = [];
 
     /**
      * Workflow constructor.
@@ -20,6 +28,9 @@ class Workflow
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
@@ -44,5 +55,26 @@ class Workflow
     public function getStates(): array
     {
         return $this->states;
+    }
+
+    /**
+     * @param Transition[] $transitions
+     *
+     * @return Workflow
+     */
+    public function addTransitions(array $transitions): Workflow
+    {
+        array_map(function (Transition $transition) {
+            array_push($this->transitions, $transition);
+        }, $transitions);
+        return $this;
+    }
+
+    /**
+     * @return Transition[]
+     */
+    public function getTransitions(): array
+    {
+        return $this->transitions;
     }
 }
